@@ -48,7 +48,7 @@ export class TriviaGameComponent implements OnInit {
         this.blinking = this.timeLeft <= 5;
       } else {
         // If time's up, reset the timer and move to the next question
-
+        this.blinking = false;
         this.timeLeft = 31;
         this.nextQuestion();
       }
@@ -91,7 +91,7 @@ export class TriviaGameComponent implements OnInit {
     return this.shuffleArray(answers);
   }
 
-  // This function is responsible for shuffling the elements in an array
+  // Shuffes the elements in an array
   shuffleArray(array: any[]): any[] {
     // Starting from the last element, pick a random element before the current one and swap them
     for (let i = array.length - 1; i > 0; i--) {
