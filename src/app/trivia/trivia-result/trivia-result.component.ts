@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TriviaService } from '../trivia-service';
+import { LeaderboardService } from '../leaderboard-service';
 
 @Component({
   selector: 'app-trivia-result',
@@ -10,7 +11,11 @@ import { TriviaService } from '../trivia-service';
 export class TriviaResultComponent implements OnInit {
   score: number = 0;
 
-  constructor(private router: Router, private triviaService: TriviaService) {}
+  constructor(
+    private router: Router,
+    private triviaService: TriviaService,
+    private leaderboardService: LeaderboardService
+  ) {}
 
   // Subscribe to the observable returned by the getScore() method then updates the score
   ngOnInit(): void {
@@ -22,5 +27,31 @@ export class TriviaResultComponent implements OnInit {
   // Restarting the game routes back to setup
   retry() {
     this.router.navigate(['/']);
+  }
+  gamertag: string = '';
+
+  submitScore() {
+    // Check if gamertag has been provided and is of length 3
+    if (this.gamertag.length !== 3) {
+      alert('Please enter a valid 3-letter gamertag.');
+      return;
+    }
+
+    // Prepare the data to be saved
+    const data = {
+      gamertag: this.gamertag,
+      score: this.score,
+      // Add any other attributes like difficulty, category, etc.
+    };
+
+    // Use the leaderboardService to save the data
+    this.leaderboardService.addGameResult(data).subscribe(
+      (response) => {
+        console.log('Score saved successfully!', response);
+      },
+      (error) => {
+        console.error('Error saving score:', error);
+      }
+    );
   }
 }

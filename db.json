@@ -1,0 +1,14 @@
+{
+  "gameResults": [
+    {
+      "gamertag": "MIK",
+      "score": 5,
+      "id": 1
+    },
+    {
+      "gamertag": "ABC",
+      "score": 0,
+      "id": 2
+    }
+  ]
+}

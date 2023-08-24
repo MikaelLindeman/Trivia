@@ -28,7 +28,14 @@
       />
     </ng-template>
   </ng-template>
-
+  <div>
+    <input
+      [(ngModel)]="gamertag"
+      maxlength="3"
+      placeholder="Enter your 3 letter tag"
+    />
+    <button (click)="submitScore()">Submit Score</button>
+  </div>
   <button (click)="retry()" class="btn-lg btn btn-primary retry-button mt-3">
     Retry
     <img src="../../../assets/images/Backarrow.svg" class="retry-image" />

@@ -8,6 +8,7 @@ import { TriviaGameComponent } from './trivia/trivia-game/trivia-game.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { TriviaResultComponent } from './trivia/trivia-result/trivia-result.component';
+import { TriviaLeaderboardComponent } from './trivia/trivia-leaderboard/trivia-leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TriviaResultComponent } from './trivia/trivia-result/trivia-result.comp
     TriviaGameComponent,
     TriviaSetupComponent,
     TriviaResultComponent,
+    TriviaLeaderboardComponent,
   ],
   imports: [
     BrowserModule,
