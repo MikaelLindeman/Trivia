@@ -44,7 +44,7 @@ export class TriviaResultComponent implements OnInit {
     const data = {
       gamertag: this.gamertag,
       score: this.score,
-      category: this.category,
+      category: this.triviaService.convertIdToCategoryName(this.category),
       difficulty: this.difficulty,
     };
 

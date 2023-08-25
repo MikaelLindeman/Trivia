@@ -1,1 +1,20 @@
-<p>trivia-leaderboard works!</p>
+<div class="container">
+  <table class="table_top">
+    <thead>
+      <tr>
+        <th>GAMERTAG</th>
+        <th>SCORE</th>
+        <th>DIFFICULTY</th>
+        <th>CATEGORY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of leaderboardData">
+        <td>{{ entry.gamertag }}</td>
+        <td>{{ entry.score }}</td>
+        <td>{{ entry.difficulty }}</td>
+        <td>{{ entry.category }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

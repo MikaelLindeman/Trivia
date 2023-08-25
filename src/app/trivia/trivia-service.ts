@@ -2,6 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
+interface TriviaCategory {
+  id: number;
+  name: string;
+}
+interface CategoryResponse {
+  trivia_categories: TriviaCategory[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,9 +18,25 @@ export class TriviaService {
   private selectedCategory: string = '';
   private selectedDifficulty: string = '';
 
+  private categoryMap: Map<string, string> = new Map();
+  //Method to get the categories and store them in the local map
+  initializeCategories(): void {
+    this.getCategories().subscribe((response: CategoryResponse) => {
+      for (let category of response.trivia_categories) {
+        this.categoryMap.set(category.id.toString(), category.name);
+      }
+    });
+  }
+
+  //Convert category ID to name
+  convertIdToCategoryName(categoryId: string): string {
+    return this.categoryMap.get(categoryId) || 'Unknown';
+  }
+
   constructor(private http: HttpClient) {
     this.retrieveSessionToken();
   }
+
   // Declaring a private BehaviorSubject with initial value 0 then converts BehaviorSubject to an obsrvable
   private scoreSubjectBehavior: BehaviorSubject<number> =
     new BehaviorSubject<number>(0);
@@ -54,8 +78,10 @@ export class TriviaService {
     }
   }
   // Method to get the categories
-  getCategories() {
-    return this.http.get('https://opentdb.com/api_category.php');
+  getCategories(): Observable<CategoryResponse> {
+    return this.http.get<CategoryResponse>(
+      'https://opentdb.com/api_category.php'
+    );
   }
 
   // Method to get the trivia questions based on the selected category and difficulty

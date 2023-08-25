@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { LeaderboardService } from '../leaderboard-service';
 
 @Component({
   selector: 'app-trivia-leaderboard',
   templateUrl: './trivia-leaderboard.component.html',
-  styleUrls: ['./trivia-leaderboard.component.scss']
+  styleUrls: ['./trivia-leaderboard.component.scss'],
 })
 export class TriviaLeaderboardComponent {
-
+  leaderboardData: any[] = [];
 }

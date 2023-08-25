@@ -1,21 +1,18 @@
 {
   "gameResults": [
     {
-      "gamertag": "MIK",
-      "score": 5,
-      "id": 1
+      "gamertag": "LOO",
+      "score": 0,
+      "category": "Unknown",
+      "difficulty": "",
+      "id": 4
     },
     {
-      "gamertag": "ABC",
-      "score": 0,
-      "id": 2
-    },
-    {
-      "gamertag": "EEE",
-      "score": 0,
-      "category": "11",
-      "difficulty": "easy",
-      "id": 3
+      "gamertag": "lol",
+      "score": 2,
+      "category": "Entertainment: Video Games",
+      "difficulty": "hard",
+      "id": 5
     }
   ]
 }
