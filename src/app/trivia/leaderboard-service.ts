@@ -21,7 +21,7 @@ export class LeaderboardService {
   }
 
   //Gets the result from the server
-  getLeaderboard() {
-    return this.http.get(this.baseUrl);
+  getLeaderboard(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
   }
 }

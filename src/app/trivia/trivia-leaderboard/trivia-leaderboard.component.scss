@@ -1,3 +1,19 @@
-.table_top {
+.table-responsive {
+  @media only screen and (max-width: 580px) {
+    .table-responsive {
+      overflow-x: auto;
+    }
+  }
+}
+.table-top {
   width: 100%;
+}
+
+.entry-gamertag {
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+}
+
+.entry-difficulty {
+  text-transform: uppercase;
 }

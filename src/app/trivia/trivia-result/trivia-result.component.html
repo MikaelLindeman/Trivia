@@ -29,12 +29,20 @@
     </ng-template>
   </ng-template>
   <div>
-    <input
-      [(ngModel)]="gamertag"
-      maxlength="3"
-      placeholder="Enter your 3 letter tag"
-    />
-    <button (click)="submitScore()">Submit Score</button>
+    <div class="input-group mb-3">
+      <input
+        [(ngModel)]="gamertag"
+        maxlength="3"
+        placeholder="Enter name"
+        class="input-tag"
+      />
+      <button
+        (click)="submitScore()"
+        class="btn-md btn button-addon submit-button"
+      >
+        Submit Score
+      </button>
+    </div>
   </div>
   <button (click)="retry()" class="btn-lg btn btn-primary retry-button mt-3">
     Retry

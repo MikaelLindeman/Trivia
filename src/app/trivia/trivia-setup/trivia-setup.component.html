@@ -9,11 +9,11 @@
   </div>
   <form (ngSubmit)="startGame()">
     <div class="form-group mt-3">
-      <label for="category">Category</label>
+      <label for="category" class="label">Category</label>
       <select
         [(ngModel)]="selectedCategory"
         name="selectedCategory"
-        class="form-control"
+        class="form-control label"
       >
         <option value="any">Any Category</option>
         <option *ngFor="let category of categories" [value]="category.id">
@@ -22,7 +22,7 @@
       </select>
     </div>
     <div class="form-group mt-3">
-      <label for="difficulty">Difficulty</label>
+      <label for="difficulty" class="label">Difficulty</label>
       <select
         [(ngModel)]="selectedDifficulty"
         name="selectedDifficulty"
