@@ -9,6 +9,13 @@
       "gamertag": "ABC",
       "score": 0,
       "id": 2
+    },
+    {
+      "gamertag": "EEE",
+      "score": 0,
+      "category": "11",
+      "difficulty": "easy",
+      "id": 3
     }
   ]
 }

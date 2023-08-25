@@ -21,6 +21,7 @@ export class TriviaResultComponent implements OnInit {
   ngOnInit(): void {
     this.triviaService.getScore().subscribe((score) => {
       this.score = score;
+      this.leaderboardService;
     });
   }
 
@@ -29,6 +30,8 @@ export class TriviaResultComponent implements OnInit {
     this.router.navigate(['/']);
   }
   gamertag: string = '';
+  category = this.triviaService.getCategory();
+  difficulty = this.triviaService.getDifficulty();
 
   submitScore() {
     // Check if gamertag has been provided and is of length 3
@@ -41,7 +44,8 @@ export class TriviaResultComponent implements OnInit {
     const data = {
       gamertag: this.gamertag,
       score: this.score,
-      // Add any other attributes like difficulty, category, etc.
+      category: this.category,
+      difficulty: this.difficulty,
     };
 
     // Use the leaderboardService to save the data

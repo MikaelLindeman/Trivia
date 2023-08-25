@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class TriviaService {
   private sessionToken: string | null = null;
+  private selectedCategory: string = '';
+  private selectedDifficulty: string = '';
 
   constructor(private http: HttpClient) {
     this.retrieveSessionToken();
@@ -59,12 +62,15 @@ export class TriviaService {
   getQuestions(category: string, difficulty: string): Observable<any> {
     let url = 'https://opentdb.com/api.php?amount=7&type=multiple';
 
-    // If category or diffuclty is specific, i.e not 'any' then add the category parameter to th URL.
+    // If category or difficulty is specific, i.e not 'any' then add the category parameter to th URL.
     if (category !== 'any') {
       url += `&category=${category}`;
+      this.selectedCategory = category;
     }
+
     if (difficulty !== 'any') {
       url += `&difficulty=${difficulty}`;
+      this.selectedDifficulty = difficulty;
     }
 
     // If a session token is available, add it to the URL.
@@ -74,5 +80,12 @@ export class TriviaService {
 
     // Send a GET request to the URL and return the resulting observable
     return this.http.get(url);
+  }
+
+  getCategory(): string {
+    return this.selectedCategory;
+  }
+  getDifficulty(): string {
+    return this.selectedDifficulty;
   }
 }
